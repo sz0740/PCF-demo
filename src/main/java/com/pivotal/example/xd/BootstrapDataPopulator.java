@@ -1,10 +1,10 @@
 package com.pivotal.example.xd;
 
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.logging.Logger;
 
 @Service
 public class BootstrapDataPopulator implements InitializingBean {
@@ -22,5 +22,5 @@ public class BootstrapDataPopulator implements InitializingBean {
         LOG.info("...Bootstrapping completed");
     }
 
-   
+
 }
