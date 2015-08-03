@@ -39,7 +39,6 @@
             font-weight: bold;
             fill: #fff;
             stroke-width: .5px;
-            fill: #fff !important;
             stroke: #000;
         }
 
@@ -138,7 +137,7 @@
 
 <div class="container">
     <div class="footer">
-        <div class="footer-text">�&nbsp;2014 Pivotal Software, Inc.</div>
+        <div class="footer-text">&copy;&nbsp;2015 Pivotal Software, Inc.</div>
         <div class="footer-poweredby"><img src="resources/img/PoweredByPivotal.png" alt="Powered By Pivotal "></div>
     </div>
 </div>
@@ -633,7 +632,7 @@ var chartRT = function () {
             }
 
 
-        }
+        };
         _self.firstTick = new Date();
         _self.lastTick = new Date();
         _self.start = function () {
@@ -641,9 +640,9 @@ var chartRT = function () {
             _self.lastTick = new Date();
             _self.tick(0);
 
-        }
+        };
         _self.start();
-    }
+    };
     _self.addSeries = function (SeriesName) {
         _self.chartSeries[SeriesName] = 0;
         _self.DataSeries.push({
@@ -654,7 +653,7 @@ var chartRT = function () {
         });
         _self.Init();
     }
-}
+};
 
 $("#stateOrders").hide();
 
@@ -680,7 +679,7 @@ chart2.MaxValue = 100;
  setTimeout(GenRandomSequence, 5000);
  */
 
-chart2.addSeries("Orders")
+chart2.addSeries("Orders");
 
 var updateData = function () {
     $.get("getData?state=" + selectedState, function (data) {
