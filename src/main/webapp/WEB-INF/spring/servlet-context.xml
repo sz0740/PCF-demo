@@ -11,17 +11,26 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:cloud="http://www.springframework.org/schema/cloud"
 	
-	xsi:schemaLocation="http://www.springframework.org/schema/integration/amqp http://www.springframework.org/schema/integration/amqp/spring-integration-amqp.xsd
-    	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
-		http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
-		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/integration/twitter http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd
-		http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/cloud http://www.springframework.org/schema/cloud/spring-cloud.xsd"
-		>
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/amqp
+	    http://www.springframework.org/schema/integration/amqp/spring-integration-amqp.xsd
+    	http://www.springframework.org/schema/mvc
+    	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/stream
+		http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+		http://www.springframework.org/schema/rabbit
+		http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/twitter
+		http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd
+		http://www.springframework.org/schema/integration/stream
+		http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/cloud
+		http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 	
 
 
@@ -34,12 +43,12 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html" />
-				<entry key="json" value="application/json" />
-			</map>
-		</property>
+		<!--<property name="mediaTypes">-->
+			<!--<map>-->
+				<!--<entry key="html" value="text/html" />-->
+				<!--<entry key="json" value="application/json" />-->
+			<!--</map>-->
+		<!--</property>-->
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -55,7 +64,7 @@
 		<property name="defaultViews">
 			<list>
 				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 					<property name="prefixJson" value="true" />
 				</bean>
 			</list>

@@ -1,11 +1,11 @@
 package com.pivotal.example.xd.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pivotal.example.xd.HeatMap;
 import com.pivotal.example.xd.Order;
 import com.pivotal.example.xd.OrderGenerator;
 import com.pivotal.example.xd.RabbitClient;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
