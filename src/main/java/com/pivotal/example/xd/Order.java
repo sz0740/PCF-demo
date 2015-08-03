@@ -1,8 +1,12 @@
 package com.pivotal.example.xd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 
 public class Order implements Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(Order.class);
 
     private String state;
     private int amount;
@@ -49,9 +53,9 @@ public class Order implements Serializable {
             ois.close();
             bis.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error(e.getLocalizedMessage(), e);
         } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
+            LOG.error(ex.getLocalizedMessage(), ex);
         }
         return obj;
     }

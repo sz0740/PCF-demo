@@ -1,15 +1,15 @@
 package com.pivotal.example.xd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.logging.Logger;
-
 @Service
 public class BootstrapDataPopulator implements InitializingBean {
 
-    private final Logger LOG = Logger.getLogger(BootstrapDataPopulator.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(BootstrapDataPopulator.class.getName());
 
 
     @Override

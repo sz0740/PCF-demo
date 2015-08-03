@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class RabbitClient {
 
-    static Logger logger = Logger.getLogger(RabbitClient.class);
+   private static final Logger LOG = Logger.getLogger(RabbitClient.class);
     private static RabbitClient instance;
     private CachingConnectionFactory ccf;
     private Queue orderQueue;
@@ -33,7 +33,6 @@ public class RabbitClient {
     private String rabbitURI;
 
     private RabbitClient() {
-
         try {
             Cloud cloud = new CloudFactory().getCloud();
             for (ServiceInfo svc : cloud.getServiceInfos()) {
@@ -77,7 +76,7 @@ public class RabbitClient {
             }
         } catch (CloudException ce) {
             // means its not being deployed on Cloud
-            logger.warn(ce.getMessage());
+            LOG.warn(ce.getMessage());
         }
 
 
@@ -122,7 +121,7 @@ public class RabbitClient {
             public void onMessage(Message message) {
                 //for now simply log the order
                 Order order = Order.fromBytes(message.getBody());
-                logger.info("Process Order: " + order.getState() + ":" + order.getAmount());
+                LOG.info("Process Order: " + order.getState() + ":" + order.getAmount());
             }
         });
         container.setAcknowledgeMode(AcknowledgeMode.AUTO);

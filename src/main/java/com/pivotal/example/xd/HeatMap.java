@@ -1,5 +1,8 @@
 package com.pivotal.example.xd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -9,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HeatMap implements Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(HeatMap.class);
 
     public static String[] states = new String[]{
             "ca", "ny", "ma", "tx", "il", "wa", "fl", "pa", "va", "nj", "or", "oh", "mi", "co", "md", "nc", "ga",
@@ -39,7 +43,7 @@ public class HeatMap implements Serializable {
 
     public void assignColors() {
 
-        HeatMapItem[] items = (HeatMapItem[]) heatMap.toArray(new HeatMapItem[]{});
+        HeatMapItem[] items = heatMap.toArray(new HeatMapItem[]{});
         int firstValue = items[0].getValue();
         int lastValue = items[items.length - 1].getValue();
 
@@ -55,8 +59,6 @@ public class HeatMap implements Serializable {
             item.setHeatMapColor("#" + convertRGBToHex(colors[itemColorGradient].getRed() + "," + colors[itemColorGradient].getGreen() + "," + colors[itemColorGradient].getBlue()));
             i++;
         }
-
-
     }
 
 
@@ -112,12 +114,11 @@ public class HeatMap implements Serializable {
             // }
             //hexValue = "0x" + zeroPads + hexValue;
         } else {
-            System.out.println("Not a valid RGB String: " + rgbForHexConversion
-                    + "\n>>>Please check your inut string.");
+            LOG.info("Not a valid RGB String: {}\n>>>Please check your inut string.", rgbForHexConversion);
         }
 
 
-        System.out.println();
+        LOG.info("");
         return hexValue;
     }
 
@@ -134,13 +135,11 @@ public class HeatMap implements Serializable {
             int b = (hexInt & 0xFF);
 
             rgbValue = r + "," + g + "," + b;
-            System.out.println("Hex Value: " + hexForRGBConversion
-                    + "\nEquivalent RGB Value: " + rgbValue);
+            LOG.info("Hex Value: {}\nEquivalent RGB Value: {}", hexForRGBConversion, rgbValue);
         } else {
-            System.out.println("Not a valid Hex String: " + hexForRGBConversion
-                    + "\n>>>Please check your input string.");
+            LOG.info("Not a valid Hex String: {}\n>>>Please check your input string.", hexForRGBConversion);
         }
-        System.out.println();
+        LOG.info("");
         return rgbValue;
 
     }
@@ -150,8 +149,8 @@ public class HeatMap implements Serializable {
         String whiteHexForRGBConversion = "0x00ffffff";
         String rgbToHex = "85,123,85";
         /** Convert from HEX to RGB */
-        //System.out.println("RGB: "+convertHexToRGB(hexForRGBConversion));
-        //System.out.println("RGB: "+convertHexToRGB(whiteHexForRGBConversion));
-        System.out.println("Hex: " + convertRGBToHex(rgbToHex));
+        //LOG.info("RGB: "+convertHexToRGB(hexForRGBConversion));
+        //LOG.info("RGB: "+convertHexToRGB(whiteHexForRGBConversion));
+        LOG.info("Hex: {}", convertRGBToHex(rgbToHex));
     }
 }

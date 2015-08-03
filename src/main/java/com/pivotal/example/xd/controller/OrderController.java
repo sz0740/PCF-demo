@@ -5,7 +5,8 @@ import com.pivotal.example.xd.HeatMap;
 import com.pivotal.example.xd.Order;
 import com.pivotal.example.xd.OrderGenerator;
 import com.pivotal.example.xd.RabbitClient;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.PreDestroy;
 import javax.servlet.ServletContext;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -35,7 +35,7 @@ public class OrderController {
 
     boolean generatingData = false;
 
-    static Logger logger = Logger.getLogger(OrderController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OrderController.class);
 
     OrderGenerator generator = new OrderGenerator();
     Thread threadSender = new Thread(generator);
@@ -109,7 +109,7 @@ public class OrderController {
     public
     @ResponseBody
     String startStream() {
-        logger.warn("Rabbit URI " + client.getRabbitURI());
+        LOG.warn("Rabbit URI " + client.getRabbitURI());
         if (client.getRabbitURI() == null) return "Please bind a RabbitMQ service";
 
         if (generatingData) return "Data already being generated";
@@ -125,7 +125,7 @@ public class OrderController {
     public
     @ResponseBody
     String stopStream() {
-        logger.warn("Rabbit URI " + client.getRabbitURI());
+        LOG.warn("Rabbit URI " + client.getRabbitURI());
         if (client.getRabbitURI() == null) return "Please bind a RabbitMQ service";
 
         if (!generatingData) return "Not Streaming";
@@ -140,7 +140,7 @@ public class OrderController {
     public
     @ResponseBody
     String kill() {
-        logger.warn("Killing application instance");
+        LOG.warn("Killing application instance");
         System.exit(-1);
         return "Killed";
 
