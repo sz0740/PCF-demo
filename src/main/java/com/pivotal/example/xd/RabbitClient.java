@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class RabbitClient {
 
-   private static final Logger LOG = Logger.getLogger(RabbitClient.class);
+    private static final Logger LOG = Logger.getLogger(RabbitClient.class);
     private static RabbitClient instance;
     private CachingConnectionFactory ccf;
     private Queue orderQueue;
@@ -39,8 +39,8 @@ public class RabbitClient {
                 if (svc instanceof AmqpServiceInfo) {
                     AmqpServiceInfo rabbitSvc = ((AmqpServiceInfo) svc);
                     rabbitURI = rabbitSvc.getUri();
-                    try {
 
+                    try {
                         ConnectionFactory factory = new ConnectionFactory();
                         factory.setUri(rabbitURI);
                         ccf = new CachingConnectionFactory(factory);
@@ -69,17 +69,15 @@ public class RabbitClient {
                         rabbitTemplate.afterPropertiesSet();
 
                     } catch (Exception e) {
+                        LOG.error("Exception connecting to RabbitMQ", e);
                         throw new RuntimeException("Exception connecting to RabbitMQ", e);
                     }
-
                 }
             }
         } catch (CloudException ce) {
             // means its not being deployed on Cloud
             LOG.warn(ce.getMessage());
         }
-
-
     }
 
     public static synchronized RabbitClient getInstance() {
