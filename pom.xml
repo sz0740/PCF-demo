@@ -31,7 +31,7 @@
         <maven-help-plugin.version>2.2</maven-help-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
-        <maven-jetty-plugin.version>9.2.4.v20141103</maven-jetty-plugin.version>
+        <maven-jetty-plugin.version>9.3.2.v20150730</maven-jetty-plugin.version>
         <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <maven-site-plugin.version>3.4</maven-site-plugin.version>
