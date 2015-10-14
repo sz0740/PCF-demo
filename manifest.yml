@@ -1,8 +1,9 @@
 ---
 applications:
-- name: pcfdemo2
+- name: pcfdemo
   memory: 512M 
   instances: 1
+  services: [rabbitmq]
   host: pcfdemo-rags
   path: ./target/pcfdemo.war
   env:
