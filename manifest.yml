@@ -3,7 +3,7 @@ applications:
 - name: pcfdemo2
   memory: 300M 
   instances: 1
-  host: pcfdemo-rags
+  host: pcfdemo-top18w
   path: ./target/pcfdemo.war
   env:
    JAVA_OPTS: -Djava.security.egd=file:///dev/urandom
